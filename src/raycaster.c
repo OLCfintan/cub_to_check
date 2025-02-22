@@ -2,31 +2,31 @@
 
 void	init_ray_data(t_ray *ray)
 {
-	int cnd;
+	int i;
 	ray->map_x = (int)ray->pos.x;
 	ray->map_y = (int)ray->pos.y;
 	ray->delta.x = fabs(1 / ray->dir.x);
 	ray->delta.y = fabs(1 / ray->dir.y);
 
-	cnd = (ray->dir.x >= 0);
-	ray->step.x = -(!cnd) + cnd;
-	ray->side_dist.x = ((-ray->map_x + ray->pos.x) * (!cnd - cnd) + cnd) * ray->delta.x;
-	cnd = (ray->dir.y >= 0);
-	ray->step.y = -(!cnd) + cnd;
-	ray->side_dist.y = ((-ray->map_y + ray->pos.y) * (!cnd - cnd) + cnd) * ray->delta.y;
+	i = (ray->dir.x >= 0);
+	ray->step.x = -(!i) + i;
+	ray->side_dist.x = ((-ray->map_x + ray->pos.x) * (!i - i) + i) * ray->delta.x;
+	i = (ray->dir.y >= 0);
+	ray->step.y = -(!i) + i;
+	ray->side_dist.y = ((-ray->map_y + ray->pos.y) * (!i - i) + i) * ray->delta.y;
 }
 
 float	get_distance(t_ray *ray)
 {
-	int		cnd;
+	int		i;
 	float	distance;
 
-	cnd = (ray->side == 0);
-    distance = ((ray->map_x - ray->pos.x + (1 - ray->step.x) / 2) / ray->dir.x) * cnd 
-	        + ((ray->map_y - ray->pos.y + (1 - ray->step.y) / 2) / ray->dir.y) * (!cnd);
+	i = (ray->side == 0);
+    distance = ((ray->map_x - ray->pos.x + (1 - ray->step.x) / 2) / ray->dir.x) * i 
+	        + ((ray->map_y - ray->pos.y + (1 - ray->step.y) / 2) / ray->dir.y) * (!i);
 
-	ray->hit.x = ray->map_x * (cnd) + (ray->pos.x + distance * ray->dir.x) * (!cnd);
-	ray->hit.y = (ray->pos.y + distance * ray->dir.y) * (cnd) + ray->map_y * (!cnd);
+	ray->hit.x = ray->map_x * (i) + (ray->pos.x + distance * ray->dir.x) * (!i);
+	ray->hit.y = (ray->pos.y + distance * ray->dir.y) * (i) + ray->map_y * (!i);
 
 	return (distance);
 }
