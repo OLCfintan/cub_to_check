@@ -1,6 +1,4 @@
-
-#include "vec2.h"
-#include <math.h>
+#include "../../include/cub3d.h"
 
 t_vec2	new_vec2(float x, float y)
 {

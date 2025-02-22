@@ -1,6 +1,4 @@
-
-#include "utils.h"
-#include "cub3d.h"
+#include "../../include/cub3d.h"
 
 void	ft_free_matrix(char **mat)
 {

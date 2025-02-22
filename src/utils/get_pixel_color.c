@@ -1,5 +1,4 @@
-
-#include "utils.h"
+#include "../../include/cub3d.h"
 
 int	get_pixel_color(t_image *img, int x, int y)
 {

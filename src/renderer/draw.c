@@ -1,5 +1,5 @@
 
-#include "utils.h"
+#include "../../include/cub3d.h"
 
 static t_texture	*get_texture(t_game *g, t_ray *data)
 {
@@ -54,11 +54,9 @@ void	draw_wall(t_game *g, int x, float wall_height, t_ray *data)
 	t_cord.x = fmodf(data->hit.x + data->hit.y, 1.0f) * t->width;
 	start = g->win_height_2 - wall_height;
 	end = (int)(start + 2.0f * wall_height);
-	if (end >= g->win_height)
-		end = g->win_height - 1;
+	end = end * (end < g->win_height) + (g->win_height - 1) * (end >= g->win_height);
 	y = start;
-	if (y < 0)
-		y = 0;
+	y *= !(y < 0);
 	while (y < end)
 	{
 		t_cord.y = get_texture_y_cord(t, y, start, wall_height);

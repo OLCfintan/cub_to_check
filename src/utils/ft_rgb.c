@@ -1,5 +1,4 @@
-
-#include "utils.h"
+#include "../../include/cub3d.h"
 
 int	ft_rgb(int r, int g, int b)
 {

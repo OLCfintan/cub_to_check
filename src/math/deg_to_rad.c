@@ -1,5 +1,4 @@
-
-#include "utils.h"
+#include "../../include/cub3d.h"
 
 float	deg_to_rad(float deg)
 {

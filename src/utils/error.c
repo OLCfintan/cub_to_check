@@ -1,5 +1,4 @@
-
-#include "utils.h"
+#include "../../include/cub3d.h"
 
 void	ft_panic(const char *msg)
 {

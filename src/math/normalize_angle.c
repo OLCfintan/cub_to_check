@@ -1,5 +1,4 @@
-
-#include "utils.h"
+#include "../../include/cub3d.h"
 
 float	normalize_angle(float angle)
 {

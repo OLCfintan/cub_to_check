@@ -1,39 +1,25 @@
-NAME            =   cub3d
-
-CC              =   cc
-CFLAGS          =   -Werror -Iinclude -Ilibft -MMD -MP -g3 -fsanitize=address
-LDFLAGS         =   -lmlx -lX11 -lXext -lm -Llibft -lft
-
-BUILD_DIR       =   build
-SRC_DIR         =   src
-
-SRC             =   $(shell find $(SRC_DIR) -type f -name '*.c')
-OBJ             =   $(SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
-DEP             =   $(OBJ:.o=.d)
-
-RM              =   rm -rf
+NAME = cub3d
+CC = cc
+FLAGS          =   -Werror -Wextra -Werror -g3 -fsanitize=address
+MLXFLAGS         =   -lmlx -lX11 -lXext -lm -Llibft #-lft
+RM = rm -rf
+SRCS = $(shell find . -type f -name '*.c')
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJS)
+	@$(CC) $(OBJS) $(FLAGS) $(MLXFLAGS) -o $(NAME)
+	@echo "making is done :)"
 
-$(NAME): $(OBJ)
-	make -C libft all
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LDFLAGS)
-
--include $(DEP)
+$(OBJS): %.o: %.c
+	@$(CC) $(FLAGS) -c $< -g $(MLXFLAGS) -o $@
 
 clean:
-	make -C libft clean
-	$(RM) $(BUILD_DIR)
+	@rm -rf $(OBJS)
 
 fclean: clean
-	make -C libft fclean
-	$(RM) $(NAME)
+	@rm -rf $(NAME)
 
-re: fclean all
-
-.PHONY: all clean fclean re
-.SECONDARY: $(OBJ)
+re : fclean
+	@make

@@ -1,7 +1,4 @@
-
-#include "cub3d.h"
-#include "utils.h"
-#include "hooks.h"
+#include "../../include/cub3d.h"
 
 t_renderer	init_renderer(void)
 {
@@ -25,12 +22,8 @@ t_renderer	init_renderer(void)
 
 float	get_player_angle(char c)
 {
-	if (c == 'N')
-		return (3 * M_PI_2);
-	if (c == 'S')
-		return (M_PI_2);
-	if (c == 'E')
-		return (0);
+	if (c == 'N' || c == 'S' || c == 'E')
+		return ((3 * (c == 'N') + 2 * (c == 'S')) * M_PI_2);
 	if (c == 'W')
 		return (M_PI);
 	exit(ft_error(ERR_NO_PLAYER));

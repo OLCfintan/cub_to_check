@@ -1,6 +1,4 @@
-
-#include "renderer.h"
-#include "utils.h"
+#include "../../include/cub3d.h"
 
 static int	render_next_frame(t_game *g)
 {

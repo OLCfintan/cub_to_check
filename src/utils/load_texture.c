@@ -1,5 +1,4 @@
-
-#include "utils.h"
+#include "../../include/cub3d.h"
 
 void	load_texture(t_game *g, t_texture *t, char *file_name)
 {

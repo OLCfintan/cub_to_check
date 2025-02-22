@@ -1,19 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 08:23:15 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/08/16 08:23:16 by obenchkr         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "cub3d.h"
-#include "utils.h"
-#include <fcntl.h>
-#include <stdbool.h>
+#include "../../include/cub3d.h"
 
 static size_t	get_map_rows(const char *file_name)
 {

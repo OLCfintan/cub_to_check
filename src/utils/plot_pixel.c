@@ -1,5 +1,4 @@
-
-#include "utils.h"
+#include "../../include/cub3d.h"
 
 void	plot_pixel(t_image *img, int x, int y, int color)
 {

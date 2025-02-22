@@ -1,16 +1,9 @@
+#include "../../include/cub3d.h"
 
-#include "hooks.h"
-#include "utils.h"
-
-void	turn_right(t_player *player)
+void	turn_right_left(t_player *player, int keycode)
 {
-	player->angle += player->turn_speed;
-	player->angle = normalize_angle(player->angle);
-}
-
-void	turn_left(t_player *player)
-{
-	player->angle -= player->turn_speed;
+	keycode = 1 - 2 * (keycode == XK_Left);
+	player->angle += (player->turn_speed * keycode);
 	player->angle = normalize_angle(player->angle);
 }
 
@@ -19,17 +12,11 @@ int	keypress_hook(int keycode, t_game *game)
 	game->renderer.re_render = true;
 	if (keycode == XK_Escape)
 		mlx_loop_end(game->renderer.mlx);
-	else if (keycode == XK_Right)
-		turn_right(&game->player);
-	else if (keycode == XK_Left)
-		turn_left(&game->player);
-	else if (keycode == XK_w)
-		move_forward(&game->player, game->map);
-	else if (keycode == XK_s)
-		move_backward(&game->player, game->map);
-	else if (keycode == XK_a)
-		move_left(&game->player, game->map);
-	else if (keycode == XK_d)
-		move_right(&game->player, game->map);
+	else if (keycode == XK_Right || keycode == XK_Left)
+		turn_right_left(&game->player, keycode);
+	else if (keycode == XK_w || keycode == XK_s)
+		move_forward_backward(&game->player, game->map, keycode);
+	else if (keycode == XK_a || keycode == XK_d)
+		move_right_left(&game->player, game->map, keycode);
 	return (0);
 }
